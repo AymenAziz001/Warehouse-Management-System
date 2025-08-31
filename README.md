@@ -1,4 +1,4 @@
-# ?? Warehouse Management System (WMS)
+﻿# 📦 Warehouse Management System (WMS)
 
 > A modern, enterprise-grade Warehouse Management System built with .NET 8, featuring both WinForms desktop application and ASP.NET Core web interface using Clean Architecture principles.
 
@@ -7,91 +7,91 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
 
-## ? Overview
+## ✨ Overview
 
 This Warehouse Management System provides comprehensive inventory management capabilities through two interfaces:
-- **??? WinForms Desktop Application**: Professional, scanner-optimized interface for warehouse operations
-- **?? ASP.NET Core Web Application**: Modern, responsive web interface with Bootstrap 5 styling
+- **🖥️ WinForms Desktop Application**: Professional, scanner-optimized interface for warehouse operations
+- **🌐 ASP.NET Core Web Application**: Modern, responsive web interface with Bootstrap 5 styling
 
 Built using Clean Architecture principles with Domain-Driven Design, the system ensures maintainability, testability, and scalability for enterprise-grade warehouse operations.
 
-## ?? Core Features
+## 🎯 Core Features
 
-### ?? Inventory Management
+### 📋 Inventory Management
 - **Item Master Data**: Complete SKU lifecycle with barcode support
-- **Location Hierarchy**: Zone ? Aisle ? Bin structure support
+- **Location Hierarchy**: Zone → Aisle → Bin structure support
 - **Stock Tracking**: Real-time inventory levels with location visibility
 - **Lot & Serial Tracking**: Optional batch and serial number management
 - **Multi-Barcode Support**: Multiple barcodes per item with validation
 
-### ?? Warehouse Operations
+### 📦 Warehouse Operations
 - **Receiving Process**: Scanner-optimized receiving with lot/expiry tracking
 - **Putaway Operations**: Efficient location-to-location transfers
 - **Picking Workflow**: Order-based picking with quantity validation
 - **Stock Adjustments**: Comprehensive adjustment tracking with audit trail
 - **Movement History**: Complete transaction audit with timestamps
 
-### ?? Reporting & Analytics
+### 📊 Reporting & Analytics
 - **Dashboard KPIs**: Real-time metrics and low-stock alerts
 - **Movement Reports**: Comprehensive filtering and export capabilities
 - **Stock Reports**: Current levels, availability, and location details
 - **Audit Trail**: Complete movement history with user tracking
 - **CSV Export**: Data export for external analysis
 
-### Movement Processing ??
+### Movement Processing 🔄
 - Receipt processing with validation
 - Putaway with location verification
 - Pick processing with availability checks
 - Stock adjustments with audit trail
 - Movement history preservation
 
-### Business Rules Enforcement ?
+### Business Rules Enforcement ✅
 - Item validation (active status, barcode lookup)
 - Location validation (active, receivable/pickable)
 - Quantity validation (positive numbers, availability)
 - Lot requirement enforcement
 - Serial number requirement enforcement
 
-### Reporting Capabilities ??
+### Reporting Capabilities 📈
 - Movement reports by date range
 - Filtering by item, type, and user
 - Real-time stock level reporting
 - CSV export functionality
 - Complete audit trail visibility
 
-### User Experience ??
+### User Experience 🎨
 - Scanner-optimized workflow
 - Keyboard navigation (F1-F5 shortcuts)
 - Audio feedback for success/error
 - Responsive UI with progress indicators
 - Clear error messages and validation
 
-## ??? Architecture
+## 🏗️ Architecture
 
 ### Clean Architecture Implementation
 
 ```
-???????????????????   ???????????????????
-?   WinForms UI   ?   ?  ASP.NET Core   ?
-?   (Desktop)     ?   ?   (Web MVC)     ?
-???????????????????   ???????????????????
-         ?                       ?
-         ?????????????????????????
-                     ?
-            ???????????????????
-            ?   Application   ?  ? Use Cases, DTOs, Results
-            ?     Layer       ?
-            ???????????????????
-                     ?
-            ???????????????????
-            ?     Domain      ?  ? Entities, Value Objects, Services
-            ?     Layer       ?
-            ???????????????????
-                     ?
-            ???????????????????
-            ? Infrastructure  ?  ? Data Access, External Services
-            ?     Layer       ?
-            ???????????????????
+┌─────────────────┐   ┌─────────────────┐
+│   WinForms UI   │   │  ASP.NET Core   │
+│   (Desktop)     │   │   (Web MVC)     │
+└─────────────────┘   └─────────────────┘
+         │                       │
+         └───────────┬───────────┘
+                     │
+            ┌─────────────────┐
+            │   Application   │  ← Use Cases, DTOs, Results
+            │     Layer       │
+            └─────────────────┘
+                     │
+            ┌─────────────────┐
+            │     Domain      │  ← Entities, Value Objects, Services
+            │     Layer       │
+            └─────────────────┘
+                     │
+            ┌─────────────────┐
+            │ Infrastructure  │  ← Data Access, External Services
+            │     Layer       │
+            └─────────────────┘
 ```
 
 ### Technical Implementation Highlights
@@ -120,54 +120,54 @@ Built using Clean Architecture principles with Domain-Driven Design, the system 
 - **Error Handling**: User-friendly messages with logging
 - **Async Operations**: Non-blocking UI with progress feedback
 
-## ?? Project Structure
+## 📂 Project Structure
 
 ```
-?? Warehouse Management System/
-??? ?? Wms.Domain/                    # Domain Layer
-?   ??? Entities/                     # Domain Entities (Item, Location, Stock, etc.)
-?   ??? ValueObjects/                 # Value Objects (Barcode, Quantity)
-?   ??? Enums/                       # Domain Enumerations (MovementType)
-?   ??? Services/                    # Domain Services (IStockMovementService)
-?   ??? Repositories/                # Repository Interfaces
-??? ?? Wms.Application/              # Application Layer
-?   ??? UseCases/                    # Application Use Cases
-?   ?   ??? Receiving/               # Receiving Operations
-?   ?   ??? Inventory/               # Stock Management
-?   ?   ??? Items/                   # Item Management
-?   ?   ??? Locations/               # Location Management
-?   ?   ??? Picking/                 # Picking Operations
-?   ?   ??? Reports/                 # Reporting
-?   ??? DTOs/                        # Data Transfer Objects
-?   ??? Common/                      # Shared Application Logic
-??? ?? Wms.Infrastructure/           # Infrastructure Layer
-?   ??? Data/                        # Database Context & Configurations
-?   ??? Repositories/                # Repository Implementations
-?   ??? Services/                    # External Service Implementations
-??? ??? Wms.WinForms/                 # WinForms Desktop Application
-?   ??? Forms/                       # Application Forms
-?   ?   ??? DashboardForm.cs         # KPI Dashboard
-?   ?   ??? ReceivingForm.cs         # Item Receiving
-?   ?   ??? PutawayForm.cs           # Putaway Operations
-?   ?   ??? PickingForm.cs           # Order Picking
-?   ?   ??? InventoryForm.cs         # Stock Management
-?   ?   ??? ItemManagementForm.cs    # Item Master Data
-?   ?   ??? LocationManagementForm.cs # Location Setup
-?   ??? Common/                      # UI Helpers & Utilities
-?   ??? Program.cs                   # Application Entry Point
-??? ?? Wms.ASP/                      # ASP.NET Core Web Application
-?   ??? Controllers/                 # MVC Controllers
-?   ??? Views/                       # Razor Views
-?   ??? Models/                      # View Models
-?   ??? wwwroot/                     # Static Assets
-?   ??? Program.cs                   # Web Application Entry Point
-??? ?? Test Projects/                # Unit & Integration Tests
-    ??? Wms.Domain.Tests/            # Domain Layer Tests
-    ??? Wms.Application.Tests/       # Application Layer Tests
-    ??? Wms.Infrastructure.Tests/    # Infrastructure Layer Tests
+📁 Warehouse Management System/
+├── 🎯 Wms.Domain/                    # Domain Layer
+│   ├── Entities/                     # Domain Entities (Item, Location, Stock, etc.)
+│   ├── ValueObjects/                 # Value Objects (Barcode, Quantity)
+│   ├── Enums/                       # Domain Enumerations (MovementType)
+│   ├── Services/                    # Domain Services (IStockMovementService)
+│   └── Repositories/                # Repository Interfaces
+├── 🚀 Wms.Application/              # Application Layer
+│   ├── UseCases/                    # Application Use Cases
+│   │   ├── Receiving/               # Receiving Operations
+│   │   ├── Inventory/               # Stock Management
+│   │   ├── Items/                   # Item Management
+│   │   ├── Locations/               # Location Management
+│   │   ├── Picking/                 # Picking Operations
+│   │   └── Reports/                 # Reporting
+│   ├── DTOs/                        # Data Transfer Objects
+│   └── Common/                      # Shared Application Logic
+├── 🔧 Wms.Infrastructure/           # Infrastructure Layer
+│   ├── Data/                        # Database Context & Configurations
+│   ├── Repositories/                # Repository Implementations
+│   └── Services/                    # External Service Implementations
+├── 🖥️ Wms.WinForms/                 # WinForms Desktop Application
+│   ├── Forms/                       # Application Forms
+│   │   ├── DashboardForm.cs         # KPI Dashboard
+│   │   ├── ReceivingForm.cs         # Item Receiving
+│   │   ├── PutawayForm.cs           # Putaway Operations
+│   │   ├── PickingForm.cs           # Order Picking
+│   │   ├── InventoryForm.cs         # Stock Management
+│   │   ├── ItemManagementForm.cs    # Item Master Data
+│   │   └── LocationManagementForm.cs # Location Setup
+│   ├── Common/                      # UI Helpers & Utilities
+│   └── Program.cs                   # Application Entry Point
+├── 🌐 Wms.ASP/                      # ASP.NET Core Web Application
+│   ├── Controllers/                 # MVC Controllers
+│   ├── Views/                       # Razor Views
+│   ├── Models/                      # View Models
+│   ├── wwwroot/                     # Static Assets
+│   └── Program.cs                   # Web Application Entry Point
+└── 🧪 Test Projects/                # Unit & Integration Tests
+    ├── Wms.Domain.Tests/            # Domain Layer Tests
+    ├── Wms.Application.Tests/       # Application Layer Tests
+    └── Wms.Infrastructure.Tests/    # Infrastructure Layer Tests
 ```
 
-## ?? Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -175,7 +175,7 @@ Built using Clean Architecture principles with Domain-Driven Design, the system 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
 - SQLite (embedded database - no additional setup required)
 
-### ??? Running the Desktop Application
+### 🖥️ Running the Desktop Application
 
 ```bash
 # Clone the repository
@@ -189,7 +189,7 @@ dotnet restore
 dotnet run --project "Warehouse Management System/Wms.WinForms.csproj"
 ```
 
-### ?? Running the Web Application
+### 🌐 Running the Web Application
 
 ```bash
 # Navigate to the web project
@@ -201,7 +201,7 @@ dotnet run
 # Open browser to https://localhost:5001 or http://localhost:5000
 ```
 
-### ?? Running Tests
+### 🧪 Running Tests
 
 ```bash
 # Run all tests
@@ -214,7 +214,7 @@ dotnet test --collect:"XPlat Code Coverage"
 dotnet test Wms.Domain.Tests/
 ```
 
-## ?? Database Schema
+## 📊 Database Schema
 
 ### Core Entities
 
@@ -229,12 +229,12 @@ dotnet test Wms.Domain.Tests/
 
 ### Relationships
 
-- **Warehouse** ? **Locations** (1:Many)
-- **Item** ? **Stock** (1:Many)
-- **Location** ? **Stock** (1:Many)
-- **Item** ? **Movements** (1:Many)
-- **Location** ? **Movements** (1:Many)
-- **Item** ? **Lots** (1:Many)
+- **Warehouse** → **Locations** (1:Many)
+- **Item** → **Stock** (1:Many)
+- **Location** → **Stock** (1:Many)
+- **Item** → **Movements** (1:Many)
+- **Location** → **Movements** (1:Many)
+- **Item** → **Lots** (1:Many)
 
 ## Sample Data & Testing
 
@@ -262,9 +262,9 @@ dotnet test Wms.Domain.Tests/
 5. **Adjust Stock**: Make quantity adjustments with reason tracking
 6. **Generate Reports**: View complete movement history and export data
 
-## ?? User Interface
+## 🎨 User Interface
 
-### ??? WinForms Desktop Features
+### 🖥️ WinForms Desktop Features
 
 - **Modern Bootstrap-Inspired Design**: Professional UI with consistent blue color scheme
 - **Keyboard Shortcuts**: F1-F8 shortcuts for rapid warehouse operations
@@ -273,7 +273,7 @@ dotnet test Wms.Domain.Tests/
 - **Audio Feedback**: Success/error sounds for scanner operations
 - **Print Support**: Label and report printing capabilities (planned)
 
-### ?? Web Application Features
+### 🌐 Web Application Features
 
 - **Responsive Design**: Mobile-first Bootstrap 5 implementation
 - **Progressive Enhancement**: Works on all devices and screen sizes
@@ -304,7 +304,7 @@ dotnet test Wms.Domain.Tests/
 | Locations | F1=Refresh, F2=Add, F3=Edit | Location master data |
 | Reports | F1=Generate, F2=Export | Movement reporting |
 
-## ?? Configuration
+## ⚙️ Configuration
 
 ### Database Configuration
 
@@ -333,7 +333,7 @@ dotnet test Wms.Domain.Tests/
 }
 ```
 
-## ?? API Reference
+## 📚 API Reference
 
 ### Key Use Cases
 
@@ -365,7 +365,7 @@ var item = await createItemUseCase.ExecuteAsync(new CreateItemDto
 }, userId);
 ```
 
-## ?? Development
+## 🔧 Development
 
 ### Adding New Features
 
@@ -409,7 +409,7 @@ var item = await createItemUseCase.ExecuteAsync(new CreateItemDto
 - Minimal memory footprint with proper disposal
 - Optimized queries with includes and projections
 
-## ?? Deployment
+## 🚀 Deployment
 
 ### Desktop Application
 - **Self-contained**: Single executable with all dependencies
@@ -422,21 +422,21 @@ var item = await createItemUseCase.ExecuteAsync(new CreateItemDto
 - **Docker Support**: Containerized deployment (planned)
 - **Cloud Ready**: Azure App Service compatible
 
-## ?? Performance & Monitoring
+## 📈 Performance & Monitoring
 
 - **Serilog Integration**: Comprehensive structured logging
 - **Performance Counters**: Database query and operation timing
 - **Error Tracking**: Detailed exception logging with context
 - **Health Checks**: Application health monitoring endpoints (web)
 
-## ?? Testing Strategy
+## 🧪 Testing Strategy
 
 - **Unit Tests**: Domain logic and use case testing
 - **Integration Tests**: Database and repository testing
 - **UI Tests**: Form behavior and workflow testing (planned)
 - **Performance Tests**: Load testing for web interface (planned)
 
-## ?? Contributing
+## 🤝 Contributing
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -451,35 +451,35 @@ var item = await createItemUseCase.ExecuteAsync(new CreateItemDto
 - Ensure all tests pass before submitting PR
 - Follow semantic versioning for breaking changes
 
-## ?? Changelog
+## 📝 Changelog
 
 ### Version 2.0.0 (Current)
-- ? Added ASP.NET Core web interface
-- ? Modern Bootstrap 5 UI design system
-- ? Responsive web design for mobile/tablet
-- ? Enhanced error handling with Result pattern
-- ? Comprehensive logging with Serilog
-- ? Improved database seeding and initialization
+- ✅ Added ASP.NET Core web interface
+- ✅ Modern Bootstrap 5 UI design system
+- ✅ Responsive web design for mobile/tablet
+- ✅ Enhanced error handling with Result pattern
+- ✅ Comprehensive logging with Serilog
+- ✅ Improved database seeding and initialization
 
 ### Version 1.0.0
-- ? Initial WinForms desktop application
-- ? Core warehouse operations (receive, putaway, pick)
-- ? Item and location management
-- ? Stock tracking and adjustments
-- ? Movement reporting and audit trail
+- ✅ Initial WinForms desktop application
+- ✅ Core warehouse operations (receive, putaway, pick)
+- ✅ Item and location management
+- ✅ Stock tracking and adjustments
+- ✅ Movement reporting and audit trail
 
-## ?? License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ????? Author
+## 👨‍💻 Author
 
 **Ahmed Osama**
 - GitHub: [@RealAhmedOsama](https://github.com/RealAhmedOsama)
-- LinkedIn: [Ahmed Osama](https://linkedin.com/in/ahmed-osama)
+- LinkedIn: [Ahmed Osama](https://www.linkedin.com/in/realahmedosama/)
 - Email: Contact via GitHub
 
-## ?? Acknowledgments
+## 🙏 Acknowledgments
 
 - **Microsoft** for the excellent .NET ecosystem and tooling
 - **Entity Framework Team** for the powerful ORM capabilities
@@ -487,7 +487,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Serilog Community** for structured logging excellence
 - **Open Source Community** for inspiration and best practices
 
-## ?? Related Documentation
+## 🔗 Related Documentation
 
 - [UI Enhancement Guide](./Warehouse%20Management%20System/README-UI-ENHANCEMENTS.md)
 - [Responsive Design Implementation](./Warehouse%20Management%20System/RESPONSIVE-UI-DOCUMENTATION.md)
@@ -497,13 +497,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   
-### ?? Ready to streamline your warehouse operations?
+### 🚀 Ready to streamline your warehouse operations?
 
-**[Get Started Now](#-getting-started)** � **[View Features](#-core-features)** � **[Check Architecture](#?-architecture)**
+**[Get Started Now](#-getting-started)** • **[View Features](#-core-features)** • **[Check Architecture](#️-architecture)**
 
 ---
 
-<p>Built with ?? using .NET 8, Clean Architecture, and modern design principles</p>
-<p><strong>? Star this repo if you find it helpful!</strong></p>
+<p>Built with ❤️ using .NET 8, Clean Architecture, and modern design principles</p>
+<p><strong>⭐ Star this repo if you find it helpful!</strong></p>
 
 </div>
